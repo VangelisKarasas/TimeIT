@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from FlaskTimeIT.models import User
 
@@ -31,3 +31,18 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+
+class PostForm(FlaskForm):
+    contact_person = StringField('Customer', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    customer = StringField('Customer', validators=[DataRequired()])
+    debit_time = StringField('Debit Time')
+    submit = SubmitField('Post')
+    
+class Invoice(FlaskForm):
+    contact_person = StringField('Customer', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    customer = StringField('Customer', validators=[DataRequired()])
+    debit_time = StringField('Debit Time')
+    submit = SubmitField('Post')
