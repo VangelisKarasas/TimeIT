@@ -40,7 +40,7 @@ class PostForm(FlaskForm):
     debit_time = StringField('Debit Time')
     submit = SubmitField('Post')
     
-class Invoice(FlaskForm):
+class InvoiceForm(FlaskForm):
     contact_person = StringField('Customer', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     customer = StringField('Customer', validators=[DataRequired()])
