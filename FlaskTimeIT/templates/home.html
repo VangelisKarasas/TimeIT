@@ -1,0 +1,30 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Timer</h1>
+<div
+  style="display: flex; flex-direction: column; gap: 20px; align-items: center"
+>
+  <form action="{{ url_for('start_timer') }}" method="post">
+    <button
+      class="btn outline-primary btn-lg custom-button"
+      style="margin-bottom: 20px"
+      type="submit"
+    >
+      Start Timer
+    </button>
+  </form>
+
+  <form action="{{ url_for('stop_timer') }}" method="post">
+    <button
+      class="btn outline-primary btn-lg custom-button"
+      style="margin-bottom: 10px"
+      type="submit"
+    >
+      Stop Timer
+    </button>
+  </form>
+
+  <p>Total Time: <span id="total_time">0</span> seconds</p>
+  <p>Current Session: <span id="current_time">0</span> seconds</p>
+</div>
+
+{% endblock content %}
