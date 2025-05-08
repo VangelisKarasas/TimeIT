@@ -1,0 +1,41 @@
+{% extends "layout.html" % } { % block content % }
+<h1>
+  Timer < /h1 >
+  <form action="{{ url_for('start_timer') }}" method="post">
+    <button
+      class="btn outline-primary btn-lg custom-button"
+      style="margin-bottom: 20px"
+      type="submit"
+    >
+      Start Timer
+    </button>
+  </form>
+
+  <form action="{{ url_for('stop_timer') }}" method="post">
+    <button
+      class="btn outline-primary btn-lg custom-button"
+      style="margin-bottom: 10px"
+      type="submit"
+    >
+      Stop Timer
+    </button>
+  </form>
+
+  <p>Total Time: <span id="total_time">0</span> seconds</p>
+  <p>Current Session: <span id="current_time">0</span> seconds</p>
+
+  <script>
+    function updateTimer() {
+         fetch('{{ url_for('timer_status') }}')
+             .then(response = > response.json())
+             .then(data = > {
+                 document.getElementById('total_time').innerText = data.total_duration || 0
+                 document.getElementById('current_time').innerText = data.current_duration | | 0;
+             });
+     }
+
+     // Update the timer every second
+     setInterval(updateTimer, 1000)
+  </script>
+  { % endblock content %}
+</h1>
